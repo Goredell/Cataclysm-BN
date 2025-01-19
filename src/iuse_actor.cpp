@@ -811,7 +811,7 @@ void consume_drug_iuse::info( const item &, std::vector<iteminfo> &dump ) const
         dump.emplace_back( "TOOL", _( "Vitamins (RDA): " ), vits );
     }
 
-    if( tools_needed.contains( itype_syringe ) ) {
+    if( tools_needed.contains( itype_syringe ) && !p.has_bionic( bio_syringe ) ) {
         dump.emplace_back( "TOOL", _( "You need a <info>syringe</info> to inject this drug." ) );
     }
 }
