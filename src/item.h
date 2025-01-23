@@ -1488,6 +1488,7 @@ class item : public location_visitable<item>, public game_object<item>
         void set_var( const std::string &name, double value );
         double get_var( const std::string &name, double default_value ) const;
         void set_var( const std::string &name, const tripoint &value );
+        tripoint get_var_zeroed( const std::string &name ) const;
         tripoint get_var( const std::string &name, const tripoint &default_value ) const;
         void set_var( const std::string &name, const std::string &value );
         std::string get_var( const std::string &name, const std::string &default_value ) const;
