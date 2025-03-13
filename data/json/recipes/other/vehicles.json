@@ -577,6 +577,20 @@
     "components": [ [ [ "leather", 6 ], [ "fur", 6 ] ], [ [ "wood_structural", 4, "LIST" ] ], [ [ "rope_natural_short", 4, "LIST" ] ] ]
   },
   {
+    "result": "seatbelt",
+    "type": "recipe",
+    "category": "CC_OTHER",
+    "subcategory": "CSC_OTHER_VEHICLE",
+    "skill_used": "fabrication",
+    "difficulty": 5,
+    "time": "30 m",
+    "autolearn": true,
+    "reversible": true,
+    "using": [ [ "sewing_standard", 20 ] ],
+    "qualities": [ { "id": "HAMMER", "level": 2 } ],
+    "components": [ [ [ "nylon", 10 ] ], [ [ "steel_tiny", 1, "LIST" ] ] ]
+  },
+  {
     "result": "five-point_harness",
     "type": "recipe",
     "category": "CC_OTHER",
@@ -1355,7 +1369,8 @@
     "reversible": true,
     "//": "sawing it down doesn't teach anything useful",
     "autolearn": true,
-    "using": [ [ "welding_standard", 10 ], [ "steel_standard", 8 ] ]
+    "using": [ [ "welding_standard", 10 ] ],
+    "components": [ [ [ "steel_armor", 12 ] ] ]
   },
   {
     "type": "recipe",
@@ -1368,7 +1383,7 @@
     "reversible": true,
     "book_learn": [ [ "textbook_fabrication", 3 ], [ "welding_book", 3 ], [ "textbook_mechanics", 4 ] ],
     "using": [ [ "welding_standard", 10 ] ],
-    "components": [ [ [ "steel_standard", 8, "LIST" ], [ "steel_plate", 1 ] ], [ [ "steel_tiny", 4, "LIST" ], [ "spike", 4 ] ] ]
+    "components": [ [ [ "steel_armor", 12 ], [ "steel_plate", 1 ] ], [ [ "steel_tiny", 4, "LIST" ], [ "spike", 4 ] ] ]
   },
   {
     "type": "recipe",
@@ -1381,7 +1396,8 @@
     "time": "12 m",
     "reversible": true,
     "book_learn": [ [ "textbook_fabrication", 5 ], [ "adv_chemistry", 6 ], [ "welding_book", 5 ] ],
-    "using": [ [ "welding_standard", 10 ], [ "steel_standard", 24 ] ]
+    "using": [ [ "welding_standard", 10 ] ],
+    "components": [ [ [ "hard_steel_armor", 12 ] ] ]
   },
   {
     "type": "recipe",
@@ -1627,8 +1643,8 @@
     "autolearn": true,
     "using": [ [ "rope_natural", 4 ], [ "welding_standard", 10 ] ],
     "qualities": [ { "id": "HAMMER", "level": 2 }, { "id": "SAW_M", "level": 1 }, { "id": "WRENCH", "level": 1 } ],
-    "byproducts": [ [ "steel_lump", 50 ] ],
-    "components": [ [ [ "hdframe", 3 ] ], [ [ "steel_chunk", 4 ], [ "scrap", 12 ] ] ]
+    "byproducts": [ [ "steel_lump", 20 ] ],
+    "components": [ [ [ "hdframe", 1 ] ] ]
   },
   {
     "type": "recipe",
@@ -1915,9 +1931,10 @@
     "skill_used": "computer",
     "difficulty": 1,
     "autolearn": true,
-    "time": "50 m",
-    "using": [ [ "3d_printing_standard", 50 ] ],
-    "components": [ [ [ "plastic_chunk", 50 ] ] ]
+    "time": "30 m",
+    "batch_time_factors": [ 60, 1 ],
+    "using": [ [ "3d_printing_standard", 30 ] ],
+    "components": [ [ [ "plastic_chunk", 30 ] ] ]
   },
   {
     "type": "recipe",
@@ -1928,8 +1945,9 @@
     "difficulty": 3,
     "time": "75 m",
     "autolearn": true,
-    "tools": [ [ [ "mold_plastic", -1 ] ], [ [ "surface_heat", 75, "LIST" ] ] ],
-    "components": [ [ [ "plastic_chunk", 50 ] ] ]
+    "batch_time_factors": [ 60, 1 ],
+    "tools": [ [ [ "mold_plastic", -1 ] ], [ [ "surface_heat", 55, "LIST" ] ] ],
+    "components": [ [ [ "plastic_chunk", 30 ] ] ]
   },
   {
     "result": "frame_carbon",
@@ -1939,8 +1957,23 @@
     "skill_used": "computer",
     "difficulty": 2,
     "autolearn": true,
-    "time": "30 m",
-    "using": [ [ "3d_printing_standard", 30 ] ],
-    "components": [ [ [ "carbon_fiber_filament", 300 ] ] ]
+    "time": "20 m",
+    "batch_time_factors": [ 60, 1 ],
+    "using": [ [ "3d_printing_standard", 20 ] ],
+    "components": [ [ [ "carbon_fiber_filament", 200 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "result": "cargo_rack_carbon",
+    "category": "CC_OTHER",
+    "subcategory": "CSC_OTHER_VEHICLE",
+    "skill_used": "computer",
+    "difficulty": 3,
+    "skills_required": [ "mechanics", 1 ],
+    "autolearn": true,
+    "time": "20 m",
+    "batch_time_factors": [ 60, 1 ],
+    "using": [ [ "3d_printing_standard", 20 ], [ "rope_natural", 4 ] ],
+    "components": [ [ [ "carbon_fiber_filament", 400 ], [ "frame_carbon", 2 ] ] ]
   }
 ]

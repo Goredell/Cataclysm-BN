@@ -1,14 +1,20 @@
-## Why should this PR be merged?
+## Purpose of change (The Why)
 
 <!-- e.g resolves #1234 / monster A is too OP despite being an early-game mob -->
 
-## What does this PR do?
+## Describe the solution (The How)
 
 <!-- e.g nerfs monster A -->
 
-## Steps to test and verify this PR
+## Describe alternatives you've considered
+
+## Testing
 
 <!-- Describe what steps you took to test that this PR resolved the bug or added the feature, and what tests you performed to make sure it didn't cause any regressions.  Also include testing suggestions for reviewers and maintainers. -->
+
+## Additional context
+
+<!-- Add any other context (such as mock-ups, proof of concepts or screenshots) about the feature or bugfix here. -->
 
 ## Checklist
 
@@ -22,7 +28,7 @@ NOTE: Please read your emails. Anyone mentioned on Github with an @ will receive
 
 - [ ] I wrote the PR title in [conventional commit format](https://docs.cataclysmbn.org/en/contribute/changelog_guidelines/).
 - [ ] I ran the [code formatter](https://docs.cataclysmbn.org/en/contribute/contributing/#code-style).
-- [ ] I linked any relevant issues using [github keyword syntax](https://docs.cataclysmbn.org/en/contribute/contributing/#pull-request-notes) like `closes #1234` in [Summary of the PR](#why-should-this-pr-be-merged) so it can be closed automatically.
+- [ ] I linked any relevant issues using [github keyword syntax](https://docs.cataclysmbn.org/en/contribute/contributing/#pull-request-notes) like `closes #1234` in [Summary of the PR](#purpose-of-change-the-why) so it can be closed automatically.
 - [ ] I've [committed my changes to new branch that isn't `main`](https://docs.cataclysmbn.org/en/contribute/contributing/#make-your-changes) so it won't cause conflict when updating `main` branch later.
 
 <!--
