@@ -996,6 +996,11 @@
   },
   {
     "type": "item_action",
+    "id": "WEAPON_BRACER",
+    "name": { "str": "Use" }
+  },
+  {
+    "type": "item_action",
     "id": "DISASSEMBLE",
     "name": { "str": "Get content" }
   },

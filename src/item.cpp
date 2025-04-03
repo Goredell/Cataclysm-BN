@@ -156,6 +156,8 @@ static const itype_id itype_water( "water" );
 static const itype_id itype_water_acid( "water_acid" );
 static const itype_id itype_water_acid_weak( "water_acid_weak" );
 
+static const flag_id flag_GUNBASE( "GUNBASE" );
+
 static const skill_id skill_survival( "survival" );
 static const skill_id skill_throw( "throw" );
 static const skill_id skill_unarmed( "unarmed" );
@@ -8241,7 +8243,7 @@ ret_val<bool> item::is_gunmod_compatible( const item &mod ) const
     }
     const islot_gunmod &g_mod = *mod.type->gunmod;
 
-    if( !is_gun() ) {
+    if( !is_gun() && !has_own_flag( flag_GUNBASE ) ) {
         return ret_val<bool>::make_failure( _( "isn't a weapon" ) );
 
     } else if( is_gunmod() ) {

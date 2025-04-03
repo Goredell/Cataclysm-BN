@@ -57,6 +57,14 @@
     "conflicts": [ "OUTER", "SKINTIGHT", "WAIST", "PERSONAL", "AURA" ]
   },
   {
+    "id": "GUNBASE",
+    "type": "json_flag",
+    "context": [ "ARMOR", "TOOL_ARMOR" ],
+    "//": "This gear os not a weapon, yet may hold weapon gunmods.",
+    "info": "This gear is a <info>base for a gun</info>.",
+    "conflicts": [ "WAIST" ]
+  },
+  {
     "id": "BIONIC_INSTALLATION_DATA",
     "type": "json_flag",
     "context": [ "GENERIC" ],

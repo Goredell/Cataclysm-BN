@@ -3023,5 +3023,26 @@
     "covers": [ "mouth" ],
     "flags": [ "VARSIZE", "STURDY", "SLEEP_IGNORE" ],
     "delete": { "qualities": [ [ "GLARE", 1 ] ] }
+  },
+  {
+    "id": "w_bracer",
+    "type": "ARMOR",
+    "name": { "str": "weapon bracer" },
+    "description": "Metallic bracet suited with a specific mount capable holding an underbarrel weapon",
+    "weight": "110 g",
+    "volume": "750 ml",
+    "price": "35 USD",
+    "price_postapoc": "250 cent",
+    "to_hit": 1,
+    "material": [ "plastic", "cotton" ],
+    "symbol": "[",
+    "looks_like": "armguard_hard",
+    "color": "dark_gray",
+    "covers": [ "arm_either" ],
+    "coverage": 50,
+    "material_thickness": 5,
+    "valid_mods": [ "steel_padded", "alloy_padded", "resized_large" ],
+    "flags": [ "WATER_FRIENDLY", "BELTED", "GUNBASE" ],
+    "use_action": "WEAPON_BRACER"
   }
 ]

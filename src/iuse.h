@@ -172,6 +172,7 @@ int wash_all_items( player *, item *, bool, const tripoint & );
 int solarpack( player *, item *, bool, const tripoint & );
 int solarpack_off( player *, item *, bool, const tripoint & );
 int weak_antibiotic( player *, item *, bool, const tripoint & );
+int weapon_bracer( player *p, item *it, bool, const tripoint & );
 int strong_antibiotic( player *, item *, bool, const tripoint & );
 int melatonin_tablet( player *, item *, bool, const tripoint & );
 int coin_flip( player *, item *, bool, const tripoint & );

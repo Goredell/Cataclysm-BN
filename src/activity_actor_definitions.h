@@ -27,6 +27,7 @@ class aim_activity_actor : public activity_actor
 {
     private:
         location_ptr<item> fake_weapon;
+        item *weapon_;
         units::energy bp_cost_per_shot = 0_J;
         int stamina_cost_per_shot = 0;
         std::vector<tripoint> fin_trajectory;
@@ -70,6 +71,8 @@ class aim_activity_actor : public activity_actor
 
         /** Aiming fake gun provided by a mutation */
         static std::unique_ptr<aim_activity_actor> use_mutation( detached_ptr<item> &&fake_gun );
+
+        static std::unique_ptr<aim_activity_actor> use_gun( item *gun );
 
         activity_id get_type() const override {
             return activity_id( "ACT_AIM" );

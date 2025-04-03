@@ -121,7 +121,10 @@ aim_activity_actor::aim_activity_actor() : fake_weapon( new fake_item_location()
 
 std::unique_ptr<aim_activity_actor> aim_activity_actor::use_wielded()
 {
-    return std::make_unique<aim_activity_actor>();
+    std::unique_ptr<aim_activity_actor> act( new aim_activity_actor() );
+    item *weapon = &get_player_character().primary_weapon();
+    act->weapon_ = weapon->is_null() ? nullptr : weapon;
+    return act;
 }
 
 std::unique_ptr<aim_activity_actor> aim_activity_actor::use_bionic( detached_ptr<item> &&fake_gun,
@@ -138,6 +141,13 @@ std::unique_ptr<aim_activity_actor> aim_activity_actor::use_mutation( detached_p
 {
     std::unique_ptr<aim_activity_actor> act( new aim_activity_actor() );
     act->fake_weapon = std::move( fake_gun );
+    return act;
+}
+
+std::unique_ptr<aim_activity_actor> aim_activity_actor::use_gun( item *gun )
+{
+    std::unique_ptr<aim_activity_actor> act( new aim_activity_actor() );
+    act->weapon_ = gun;
     return act;
 }
 
@@ -320,8 +330,20 @@ item *aim_activity_actor::get_weapon()
     } else {
         // Check for lost gun (e.g. yanked by zombie technician)
         // TODO: check that this is the same gun that was used to start aiming
-        item *weapon = &get_player_character().primary_weapon();
-        return weapon->is_null() ? nullptr : weapon;
+        auto &you = get_player_character();
+        if( weapon_ ) {
+            if( weapon_ == &you.primary_weapon() ) {
+                return weapon_;
+            } else {
+                for( auto it : you.worn ) {
+                    auto mods = it->gunmods();
+                    if( std::find( mods.begin(), mods.end(), weapon_ ) != mods.end() ) {
+                        return weapon_;
+                    }
+                }
+            }
+        }
+        return nullptr;
     }
 }
 
@@ -2062,7 +2084,8 @@ std::unique_ptr<activity_actor> wash_activity_actor::deserialize( JsonIn &jsin )
     return actor;
 }
 
-inline void construction_activity_actor::recalc_all_moves( player_activity &act, Character &who )
+inline void construction_activity_actor::recalc_all_moves( player_activity &act,
+        Character &who )
 {
     // Check if pc was lost for some reason, but actually still exists on map, e.g. save/load
     if( !pc ) {

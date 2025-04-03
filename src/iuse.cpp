@@ -362,6 +362,8 @@ static const std::string flag_PLOWABLE( "PLOWABLE" );
 // how many characters per turn of radio
 static constexpr int RADIO_PER_TURN = 25;
 
+static const gunmod_location gunmod_underbarrel( "underbarrel" );
+
 #include "iuse_software.h"
 
 
@@ -9250,6 +9252,58 @@ int iuse::weak_antibiotic( player *p, item *it, bool, const tripoint & )
     return it->type->charges_to_use();
 }
 
+int iuse::weapon_bracer( player *p, item *it, bool, const tripoint & )
+{
+    if( !it || !p ) {
+        return 0;
+    }
+
+    avatar &you = *p->as_avatar();
+    if( it->gunmods().empty() ) {
+        const std::string choose_gun = _( "Choose gun to attach:" );
+        const std::string dont_have_gun = _( "You don't have any gun to attach." );
+        auto filter = []( const item & it ) {
+            return it.is_gun() && it.is_gunmod() &&
+                   it.type->gunmod->location == gunmod_underbarrel;
+        };
+
+        item *gunmod = game_menus::inv::titled_filter_menu( filter, you, choose_gun, dont_have_gun );
+
+        if( !gunmod ) {
+            add_msg( _( "Never mind" ) );
+            return 0;
+        } else {
+            avatar_funcs::gunmod_add( you, *it, *gunmod );
+            p->add_msg_if_player( m_good, _( "You attach the %s to the bracer." ), gunmod->tname() );
+            p->remove_item( *gunmod );
+        }
+        return 0;
+    } else {
+        auto gun = it->gunmods().front();
+        if( !gun->is_firearm() ) {
+            p->add_msg_if_player( m_bad, _( "How did u do that ?" ) );
+            return 0;
+        }
+
+        if( gun->ammo_sufficient() ) {
+            if( gun->ammo_data() && gun->type->gun &&
+                !gun->ammo_types().contains( gun->ammo_data()->ammo->type ) ) {
+                std::string ammoname = gun->ammo_current()->nname( 1 );
+                add_msg( m_info, _( "The %s can't be fired while loaded with incompatible ammunition %s" ),
+                         gun->tname(), ammoname );
+                return 0;
+            }
+
+            you.assign_activity( std::make_unique<player_activity>( aim_activity_actor::use_gun( gun ) ),
+                                 false );
+        } else {
+            p->add_msg_if_player( m_info, _( "You need to reload the weapon." ) );
+            return 0;
+        }
+    }
+    return 0;
+}
+
 int iuse::strong_antibiotic( player *p, item *it, bool, const tripoint & )
 {
     p->add_msg_player_or_npc( m_neutral,
@@ -9259,7 +9313,7 @@ int iuse::strong_antibiotic( player *p, item *it, bool, const tripoint & )
         p->add_msg_if_player( m_good, _( "You feel much better - almost entirely." ) );
     }
     p->add_effect( effect_strong_antibiotic, 12_hours );
-    return it->type->charges_to_use();
+    return 0;
 }
 
 int iuse::craft( player *p, item *it, bool, const tripoint &pos )

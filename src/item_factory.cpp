@@ -1070,6 +1070,7 @@ void Item_factory::init()
     add_iuse( "WASH_ALL_ITEMS", &iuse::wash_all_items );
     add_iuse( "WATER_PURIFIER", &iuse::water_purifier );
     add_iuse( "WEAK_ANTIBIOTIC", &iuse::weak_antibiotic );
+    add_iuse( "WEAPON_BRACER", &iuse::weapon_bracer );
     add_iuse( "WEATHER_TOOL", &iuse::weather_tool );
     add_iuse( "WEED_CAKE", &iuse::weed_cake );
     add_iuse( "XANAX", &iuse::xanax );
