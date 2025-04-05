@@ -13,8 +13,6 @@
 #include "locations.h"
 #include "memory_fast.h"
 #include "pickup_token.h"
-#include "location_ptr.h"
-#include "locations.h"
 #include "construction_partial.h"
 #include "point.h"
 #include "type_id.h"

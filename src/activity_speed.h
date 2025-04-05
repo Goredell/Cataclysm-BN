@@ -4,17 +4,12 @@
 
 #include <vector>
 
-#include "character_stat.h"
 #include "activity_type.h"
+#include "character_stat.h"
+#include "crafting.h"
 
-
-static const activity_id ACT_NULL = activity_id::NULL_ID();
-
-struct bench_loc;
 class Character;
 class inventory;
-
-
 
 struct activity_reqs_adapter {
     std::vector<activity_req<quality_id>> qualities;
@@ -31,7 +26,7 @@ struct activity_reqs_adapter {
 class activity_speed
 {
     public:
-        const activity_id &type = ACT_NULL;
+        const activity_id &type = activity_id::NULL_ID();
         std::optional<bench_loc> bench = std::nullopt;
         int assistant_count = 0;
         const std::function<float( const Character & )> morale_factor_custom_formula = [](
