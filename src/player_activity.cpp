@@ -121,6 +121,22 @@ std::string player_activity::get_str_value( size_t index, const std::string &def
     return index < str_values.size() ? str_values[index] : def;
 }
 
+void player_activity::init_all_moves( Character &who )
+{
+    if( type->assistable() ) {
+        get_assistants( who );
+        speed.assistant_count = assistants().size();
+    }
+    if( type->bench_affected() ) {
+        speed.bench = find_best_bench( who.pos() );
+    }
+    if( actor ) {
+        actor->calc_all_moves( *this, who );
+    } else {
+        speed.calc_all_moves( who );
+    }
+}
+
 inline std::vector<npc *> &player_activity::assistants()
 {
     if( !assistants_ids_.empty() && assistants_.empty() ) {
@@ -191,7 +207,7 @@ std::optional<std::string> player_activity::get_progress_message( const avatar &
     if( !type || get_verb().empty() ) {
         return std::optional<std::string>();
     }
-    if( !type->special() && is_verbose_tooltip() ) {
+    if( !type->special() && type->verbose_tooltip() ) {
 
         /*
         * Progress block
