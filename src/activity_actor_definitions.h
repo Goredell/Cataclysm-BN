@@ -245,7 +245,11 @@ class disassemble_activity_actor : public activity_actor
         void finish( player_activity &act, Character &who ) override;
 
         float calc_bench_factor( const Character &who,
-                                 const std::optional<bench_loc> &bench ) const override;
+                                 const std::optional<bench_loc> &bench ) const override {
+            return calc_bench_factor( who, bench, *targets.front().loc );
+        }
+        static float calc_bench_factor( const Character &who,
+                                        const std::optional<bench_loc> &bench, item &targe );
 
         void serialize( JsonOut &jsout ) const override;
         static std::unique_ptr<activity_actor> deserialize( JsonIn &jsin );

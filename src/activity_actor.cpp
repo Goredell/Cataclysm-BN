@@ -727,11 +727,11 @@ void disassemble_activity_actor::finish( player_activity &act, Character &who )
 }
 
 float disassemble_activity_actor::calc_bench_factor( const Character &who,
-        const std::optional<bench_loc> &bench ) const
+        const std::optional<bench_loc> &bench, item &target )
 {
     return bench
-           ? crafting::best_bench_here( *targets.front().loc, bench->position, true ).second
-           : crafting::best_bench_here( *targets.front().loc, who.pos(), true ).second;
+           ? crafting::best_bench_here( target, bench->position, true ).second
+           : crafting::best_bench_here( target, who.pos(), true ).second;
 
 }
 
