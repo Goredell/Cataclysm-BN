@@ -170,7 +170,7 @@ class player_activity
          * Bunch of functioins to calculate speed factors based on certain conditions
          * Most of those are quite self-explanatory by the name
         */
-       
+
         void init_all_moves( Character &who );
 
         //Calculates speed factors that may change every turn
