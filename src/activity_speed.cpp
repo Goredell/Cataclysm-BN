@@ -8,6 +8,8 @@
 #include "construction.h"
 #include "recipe.h"
 
+static const activity_id ACT_NULL = activity_id::NULL_ID();
+
 static const skill_id stat_speech( "speech" );
 
 static const quality_id qual_BUTCHER( "BUTCHER" );
@@ -52,6 +54,10 @@ void activity_speed::calc_moves( const Character &who )
 
 void activity_speed::calc_all_moves( Character &who )
 {
+    //No calculation needed
+    if( type == ACT_NULL ) {
+        return;
+    }
     if( type->bench_affected() ) {
         calc_bench_factor( who );
     }
@@ -69,6 +75,10 @@ void activity_speed::calc_all_moves( Character &who )
 
 void activity_speed::calc_all_moves( Character &who, activity_reqs_adapter &reqs )
 {
+    //No calculation needed
+    if( type == ACT_NULL ) {
+        return;
+    }
     if( type->bench_affected() ) {
         calc_bench_factor( who );
     }
