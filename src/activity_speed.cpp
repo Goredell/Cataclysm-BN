@@ -39,7 +39,7 @@ inline static float refine_factor( float speed, int denom = 1, float min = -75.0
 void activity_speed::calc_moves( const Character &who )
 {
     //No calculation needed
-    if( !type ) {
+    if( type.is_null() || type.is_empty() ) {
         return;
     }
     if( type->light_affected() ) {
@@ -59,7 +59,7 @@ void activity_speed::calc_moves( const Character &who )
 void activity_speed::calc_all_moves( Character &who )
 {
     //No calculation needed
-    if( !type ) {
+    if( type.is_null() || type.is_empty() ) {
         return;
     }
     if( type->bench_affected() ) {
@@ -80,7 +80,7 @@ void activity_speed::calc_all_moves( Character &who )
 void activity_speed::calc_all_moves( Character &who, activity_reqs_adapter &reqs )
 {
     //No calculation needed
-    if( !type ) {
+    if( type.is_null() || type.is_empty() ) {
         return;
     }
     if( type->bench_affected() ) {
