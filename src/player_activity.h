@@ -58,9 +58,7 @@ class player_activity
         /** Controls whether this activity can be cancelled with 'pause' action */
         bool interruptable_with_kb = true;
 
-        activity_speed speed{
-            .type = type,
-        };
+        activity_speed speed;
         std::vector<safe_reference<item>> tools = {};
 
         // The members in the following block are deprecated, prefer creating a new

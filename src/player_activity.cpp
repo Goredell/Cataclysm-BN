@@ -72,7 +72,8 @@ player_activity::player_activity( activity_id t, int turns, int Index, int pos,
     type( t ), moves_total( turns ), moves_left( turns ),
     index( Index ),
     position( pos ), name( name_in ),
-    placement( tripoint_min ), auto_resume( false )
+    placement( tripoint_min ), auto_resume( false ),
+    speed{.type = type}
 {
 }
 
