@@ -76,18 +76,18 @@ player_activity::player_activity( activity_id t, int turns, int Index, int pos,
 {
 }
 
-player_activity::player_activity( std::unique_ptr<activity_actor> &&actor ) : type(
-        actor->get_type() ),
-    actor( std::move( actor ) ), moves_total( 0 ), moves_left( 0 ),
+player_activity::player_activity( std::unique_ptr<activity_actor> &&actor_ ) : type(
+        actor_->get_type() ),
+    actor( std::move( actor_ ) ), moves_total( 0 ), moves_left( 0 ),
     speed{
     .type = type,
-    .morale_factor_custom_formula = [ & actor]( const Character & who ) {return actor->calc_morale_factor( who ); },
-    .tools_factor_custom_formula = [ & actor]( const std::vector<activity_req<quality_id>> & reqs,
-            const inventory & inv ) {return actor->calc_tools_factor( reqs, inv ); },
-    .stats_factor_custom_formula = [ & actor]( const Character & who,
-            const std::vector<activity_req<character_stat>> & reqs ) {return actor->calc_stats_factors( who, reqs ); },
-    .skills_factor_custom_formula = [ & actor]( const Character & who,
-            const std::vector<activity_req<skill_id>> & reqs ) {return actor->calc_skill_factor( who, reqs ); },
+    .morale_factor_custom_formula = [ & ]( const Character & who ) {return actor->calc_morale_factor( who ); },
+    .tools_factor_custom_formula = [ & ]( const activity_speed::q_reqs & reqs, const inventory & inv )
+    {   return actor->calc_tools_factor( reqs, inv );   },
+    .stats_factor_custom_formula = [ & ]( const Character & who, const activity_speed::stat_reqs & reqs )
+    {   return actor->calc_stats_factors( who, reqs );  },
+    .skills_factor_custom_formula = [ & ]( const Character & who, const activity_speed::skill_reqs & reqs )
+    {   return actor->calc_skill_factor( who, reqs );   },
 }
 {
 }
