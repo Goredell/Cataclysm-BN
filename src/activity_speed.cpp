@@ -188,7 +188,7 @@ void activity_speed::calc_bench_factor( const Character &who )
 
 void activity_speed::calc_stats_factors( const Character &who )
 {
-    auto f = ( who, type->stats );
+    auto f = stats_factor_custom_formula( who, type->stats );
 
     if( !f.empty() ) {
         return;
