@@ -13,8 +13,6 @@
 #include "recipe.h"
 #include "type_id.h"
 
-static const activity_id ACT_NULL = activity_id::NULL_ID();
-
 static const skill_id stat_speech( "speech" );
 
 static const quality_id qual_BUTCHER( "BUTCHER" );
@@ -184,7 +182,7 @@ void activity_speed::calc_assistants_factor( const Character &who )
 }
 
 
-void activity_speed::calc_bench_factor( const Character &who )
+void activity_speed::calc_bench_factor( const Character &/*who*/ )
 {
     bench_factor = bench
                    ? bench->wb_info.multiplier_adjusted

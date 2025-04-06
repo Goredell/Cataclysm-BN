@@ -2086,7 +2086,7 @@ void construction_activity_actor::start( player_activity &/*act*/, Character &/*
     pc = here.partial_con_at( local );
     auto &built = pc->id.obj();
 
-    std::string name = "";
+    std::string name;
 
     if( pc->id == deconstruct || pc->id == deconstruct_simple ||
         built.group == advanced_object_deconstruction ) {
