@@ -124,19 +124,19 @@ void player_activity::init_all_moves( Character &who )
     }
     if( actor ) {
         speed.morale_factor_custom_formula = [&]( const Character & who ) {
-           return actor->calc_morale_factor( who );
+            return actor->calc_morale_factor( who );
         };
         speed.tools_factor_custom_formula = [&]( const q_reqs & reqs,
         const inventory & inv ) {
-           return actor->calc_tools_factor( reqs, inv );
+            return actor->calc_tools_factor( reqs, inv );
         };
         speed.stats_factor_custom_formula = [&]( const Character & who,
         const stat_reqs & reqs ) {
-           return actor->calc_stats_factors( who, reqs );
+            return actor->calc_stats_factors( who, reqs );
         };
         speed.skills_factor_custom_formula = [&]( const Character & who,
         const skill_reqs & reqs ) {
-           return actor->calc_skill_factor( who, reqs );
+            return actor->calc_skill_factor( who, reqs );
         };
 
         actor->calc_all_moves( *this, who );
