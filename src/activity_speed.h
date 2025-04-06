@@ -2,13 +2,14 @@
 #ifndef ACTIVITY_SPEED_H
 #define ACTIVITY_SPEED_H
 
-#include <vector>
 #include <optional>
 #include <utility>
+#include <vector>
 
 #include "activity_type.h"
 #include "character_stat.h"
 #include "crafting.h"
+#include "type_id.h"
 
 class Character;
 class inventory;
@@ -22,12 +23,6 @@ struct activity_reqs_adapter {
     activity_reqs_adapter( const construction &con );
 };
 
-/*
- * Struct to track activity speed by factors
-*/
-class activity_speed
-{
-    public:
         using q_reqs = std::vector<activity_req<quality_id>>;
         using stat_reqs = std::vector<activity_req<character_stat>>;
         using stat_factors = std::vector<std::pair<character_stat, float>>;
@@ -38,9 +33,12 @@ class activity_speed
         using stats_factor_fn = std::function<stat_factors( const Character &, const stat_reqs & )>;
         using skills_factor_fn = std::function<float( const Character &, const skill_reqs & )>;
 
-
-
-
+/*
+ * Struct to track activity speed by factors
+*/
+class activity_speed
+{
+    public:
         const activity_id &type = activity_id::NULL_ID();
         std::optional<bench_loc> bench = std::nullopt;
         int assistant_count = 0;

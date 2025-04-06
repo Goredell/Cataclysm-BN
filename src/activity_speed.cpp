@@ -1,12 +1,17 @@
 #include "activity_speed.h"
 
 #include <optional>
+#include <utility>
+#include <vector>
 
+#include "activity_type.h"
 #include "character.h"
 #include "character_functions.h"
-#include "crafting.h"
+#include "character_stat.h"
 #include "construction.h"
+#include "crafting.h"
 #include "recipe.h"
+#include "type_id.h"
 
 static const activity_id ACT_NULL = activity_id::NULL_ID();
 
