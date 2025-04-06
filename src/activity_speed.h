@@ -1,8 +1,10 @@
 #pragma once
-#ifndef _ACTIVITY_SPEED_H
-#define _ACTIVITY_SPEED_H
+#ifndef ACTIVITY_SPEED_H
+#define ACTIVITY_SPEED_H
 
 #include <vector>
+#include <optional>
+#include <utility>
 
 #include "activity_type.h"
 #include "character_stat.h"
@@ -110,4 +112,4 @@ class activity_speed
                                         const inventory &inv );
 };
 
-#endif // CATA_SRC_PLAYER_ACTIVITY_H
+#endif // ACTIVITY_SPEED_H
